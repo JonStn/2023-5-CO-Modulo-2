@@ -26,6 +26,10 @@ class Enemy(Sprite):
     def update(self, ships, game):
         self.rect.y += self.speed_y
         self.shoot(game.bullet_manager)
+        for bullet in game.bullet_manager.bullets:
+            if bullet.rect.colliderect(self.rect) and bullet.owner == 'player':
+                if self in ships:
+                    ships.remove(self)
 
         if self.movement_x == 'left':
             self.rect.x -= self.speed_x
@@ -36,7 +40,6 @@ class Enemy(Sprite):
 
         if self.rect.y >= SCREEN_HEIGHT:
             ships.remove(self)
-
 
     def draw(self, screen):
         screen.blit(self.image, (self.rect.x, self.rect.y))

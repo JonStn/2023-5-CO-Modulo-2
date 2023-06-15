@@ -12,7 +12,7 @@ class EnemyManager:
         self.add_enemy()
         for enemy in self.enemies:
             enemy.update(self.enemies, game)
-        
+            
     def draw(self, screen):
         for enemy in self.enemies:
             enemy.draw(screen)
@@ -21,7 +21,7 @@ class EnemyManager:
         if len(self.enemies) < 1:
             enemy_type = random.choice([ENEMY_1, ENEMY_2])
             if enemy_type == ENEMY_1:
-                enemy = Enemy(ENEMY_1, 40, 60, 3, 5, 30, 100)
+                enemy = Enemy(ENEMY_1, 40, 60, 3, 5, 30, 70)
             elif enemy_type == ENEMY_2:
-                enemy = Enemy(ENEMY_2, 30, 40, 10 , 3, 5, 50)
+                enemy = Enemy(ENEMY_2, 30, 40, 12 , 3, 50, 100)
             self.enemies.append(enemy)
