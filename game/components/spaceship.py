@@ -27,9 +27,8 @@ class Spaceship(Sprite):
             self.move_up()
         elif user_input[pygame.K_DOWN]:
             self.move_down()
-
-        if user_input[pygame.K_SPACE]:
-            self.shoot(game.bullets)
+        elif user_input[pygame.K_SPACE]:
+            self.shoot(game)
     
     def move_left(self):
         self.rect.x -= 10
@@ -49,9 +48,9 @@ class Spaceship(Sprite):
         if self.rect.y < SCREEN_HEIGHT - self.SPACESHIP_HEIGHT:
             self.rect.y += 10
     
-    def shoot(self, bullets):
+    def shoot(self, game):
         bullet = Bullet(self)
-        bullets.append(bullet)
+        game.bullet_manager.add_bullet(bullet)
         
     def draw(self, screen):
         screen.blit(self.image, (self.rect.x, self.rect.y))

@@ -16,14 +16,12 @@ class Bullet():
         self.owner = spaceship.type
 
     def update(self, bullets):
-        if self.owner == 'enemy':
-            self.rect.y += self.SPEED
-        elif self.owner == 'player':
+        if self.owner == 'player':
             self.rect.y -= self.SPEED
-
-        if self.rect.y >= SCREEN_HEIGHT:
-            bullets.remove(self)
-        elif self.rect.y <= 0:
+        else:
+            self.rect.y += self.SPEED
+        
+        if self.rect.y < 0 or self.rect.y >= SCREEN_HEIGHT:
             bullets.remove(self)
 
     def draw(self, screen):
